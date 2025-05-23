@@ -7,7 +7,13 @@ import 'package:online_store/views/product_detail_page.dart';
 
 class ProductGridPage extends StatefulWidget { //базовый виджет неизменяемый, только отображение данных
   final String? categoryId; //id категории
-  ProductGridPage({this.categoryId}); //конструктор с categoryId
+  final String? categoryTitle; //название категории
+
+  const ProductGridPage({
+    Key? key, 
+    this.categoryId,
+    this.categoryTitle,
+  }) : super(key: key); //конструктор с categoryId
 
   @override
   _ProductGridPageState createState() => _ProductGridPageState();
@@ -70,7 +76,7 @@ class _ProductGridPageState extends State<ProductGridPage> {
   Widget build(BuildContext context) { //вызывается при переопределении виджета
     
     return Scaffold( //базовый каркас экрана
-      appBar: AppBar(title: Text('Товары')), //шапка
+      appBar: AppBar(title: Text(widget.categoryTitle ?? 'Товары')), //шапка
 
       body: NotificationListener<ScrollNotification> ( //тело
         onNotification: (notification) { //слушатель прокрутки

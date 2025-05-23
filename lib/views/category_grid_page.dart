@@ -32,7 +32,10 @@ class CategoryGridPage extends StatelessWidget { //базовый виджет �
                   onTap: () => Navigator.push ( //при нажатии - открыаем экран товаров категории
                     context,
                     MaterialPageRoute ( //переход с анимацией
-                      builder: (_) => ProductGridPage(categoryId: category.id), 
+                      builder: (_) => ProductGridPage(
+                        categoryId: category.id,
+                        categoryTitle: category.title,
+                      ), 
                     ),
                   ),
 
