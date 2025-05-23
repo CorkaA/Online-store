@@ -7,11 +7,17 @@ class Product {
   final String imageUrl; //imageUrl
   final double price; //price
 
+  final String productDescription; //productDescription
+  final List<String> images; //images
+
   Product({
     required this.id,
     required this.title,
     required this.imageUrl,
     required this.price,
+
+    required this.productDescription,
+    required this.images,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) { //метод для создания объекта из json
@@ -20,6 +26,9 @@ class Product {
       title: json['title'],
       imageUrl: json['imageUrl'],
       price: json['price'].toDouble(),
+
+      productDescription: json['productDescription'],
+      images: List<String>.from(json['images']),
     );
   }
 }

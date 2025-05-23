@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_store/models/product.dart';
 import 'package:online_store/app.dart';
-//import 'package:online_store/views/product_detail_page.dart';
+import 'package:online_store/views/product_detail_page.dart';
 
 class ProductGridPage extends StatelessWidget { //базовый виджет неизменяемый, только отображение данных
   final String? categoryId; //id категории
@@ -25,12 +25,12 @@ class ProductGridPage extends StatelessWidget { //базовый виджет н
               itemBuilder: (context, index) { //формирование каждой ячейки
                 final product = snapshot.data![index]; //товар по индексу
                 return ListTile ( //элемент списка
-                  /* onTap: () => Navigator.push ( //при нажатии - открыаем экран товара
+                  onTap: () => Navigator.push ( //при нажатии - открыаем экран товара
                     context,
                     MaterialPageRoute ( //переход с анимацией
                       builder: (_) => ProductDetailPage(product: product), 
                     ),
-                  ), */
+                  ),
                   leading: Image.network(product.imageUrl),
                   title: Text(product.title),
                   subtitle: Text('${product.price} руб.'),
