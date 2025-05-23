@@ -16,14 +16,29 @@ class ProductDetailPage extends StatelessWidget {
         child: Column(
           children: [
 
-            Image.network ( //главное изображение
-              product.imageUrl,
-              fit: BoxFit.cover, //во всю ширину
-              height: 200,
+            Padding( //главное изображение
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child: Image.network(
+                product.imageUrl,
+                fit: BoxFit.cover,
+                height: 200,
+              ),
+            ),
+
+            Padding ( //название товара
+              padding: EdgeInsets.all(10.0), //отступ вокруг текста
+              child: Text (
+                product.title,
+                textAlign: TextAlign.center,
+                style: TextStyle (
+                  fontSize: 20, 
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
             ),
 
             Padding ( //цена
-              padding: EdgeInsets.all(10.0), //отступ вокруг текста
+              padding: EdgeInsets.all(5.0), //отступ вокруг текста
               child: Text (
                 'Цена: ${product.price} руб.', 
                 style: TextStyle (
@@ -41,7 +56,7 @@ class ProductDetailPage extends StatelessWidget {
               ),
             ),
         
-            if (product.images.isNotEmpty) //если не пусто
+            if (product.images.isNotEmpty) //лента изображений, если не пусто
               SizedBox (
                 height: 100,
                 child: ListView.builder (

@@ -10,7 +10,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Интернет-магазин',
-      theme: ThemeData (primarySwatch: Colors.blue),
+      theme: ThemeData (
+        scaffoldBackgroundColor: const Color.fromARGB(255, 255, 227, 199),
+        appBarTheme: AppBarTheme(
+          backgroundColor: const Color.fromARGB(255, 238, 156, 50),
+        ),
+      ),
       home: CategoryGridPage(),
     );
   }

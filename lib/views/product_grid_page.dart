@@ -90,16 +90,22 @@ class _ProductGridPageState extends State<ProductGridPage> {
           itemBuilder: (context, index) { //формирование каждой ячейки
             if (index < _displayedProducts.length) {
               final product = _displayedProducts[index]; //товар по индексу
-              return ListTile ( //элемент списка
-                onTap: () => Navigator.push ( //при нажатии - открыаем экран товара
-                  context,
-                  MaterialPageRoute ( //переход с анимацией
-                    builder: (_) => ProductDetailPage(product: product), 
+              return Padding(
+                padding: EdgeInsets.symmetric(vertical: 5.0), // отступ сверху и снизу
+                child: Container(
+                  color: const Color.fromARGB(255, 255, 233, 210), // фон для элемента списка
+                  child: ListTile( //элемент списка
+                    onTap: () => Navigator.push ( //при нажатии - открыаем экран товара
+                      context,
+                      MaterialPageRoute ( //переход с анимацией
+                        builder: (_) => ProductDetailPage(product: product), 
+                      ),
+                    ),
+                    leading: Image.network(product.imageUrl),
+                    title: Text(product.title),
+                    subtitle: Text('${product.price} руб.'),
                   ),
                 ),
-                leading: Image.network(product.imageUrl),
-                title: Text(product.title),
-                subtitle: Text('${product.price} руб.'),
               );
             }
             else { //если последний, то индикатор загрузки

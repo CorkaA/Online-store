@@ -9,7 +9,8 @@ class CategoryGridPage extends StatelessWidget { //базовый виджет �
   @override //переопределение существующего метода ьез создания нового
   Widget build(BuildContext context) { //вызывается при переопределении виджета
     return Scaffold( //базовый каркас экрана
-      appBar: AppBar(title: Text('Каталог')), //шапка
+      appBar: AppBar(
+        title: Text('Каталог')), //шапка
 
       body: FutureBuilder<List<Category>> (   //тело
         future: App().categoryApi.fetchCategories(), //загрузка данных через апи
@@ -23,6 +24,8 @@ class CategoryGridPage extends StatelessWidget { //базовый виджет �
                 mainAxisSpacing: 0.5, //расстояние между по верт
                 crossAxisSpacing: 0.5, //расстояние между по гориз
               ), 
+
+              padding: EdgeInsets.all(7), //отступ от краев
 
               itemCount: snapshot.data!.length, //кол-во элементов - категорий
 
@@ -40,12 +43,19 @@ class CategoryGridPage extends StatelessWidget { //базовый виджет �
                   ),
 
                   child: Card (
+                    color: Colors.white,
                     child: Column(
                       children: [
                         Expanded( //растяжка изображения
-                          child: Image.network ( //загрузка изображения 
-                            category.imageUrl,
-                            fit: BoxFit.cover, //растяжка
+                          child: Padding(
+                            padding: EdgeInsets.all(10), // отступы внутри ячейки
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.network(
+                                category.imageUrl,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
                         ),
                       Text(category.title), //название категории
