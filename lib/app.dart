@@ -5,6 +5,7 @@
 */
 
 import 'package:online_store/api/category_api.dart';
+import 'package:online_store/api/product_api.dart';
 
 class App { //для использования подключения к API один раз без множества одинаковых объектов (sigleton паттерн)
   static final App _instance = App._internal(); //приват стат экземпляр
@@ -12,4 +13,5 @@ class App { //для использования подключения к API о
   App._internal(); //приват конструктор, чтоб не создавались экземпляры не в app
 
   final CategoryApi categoryApi = CategoryApi(); //создаем и храним экземпляры API для работы с категориями
+  final ProductApi productApi = ProductApi(); 
 }

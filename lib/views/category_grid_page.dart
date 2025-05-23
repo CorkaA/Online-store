@@ -1,10 +1,9 @@
 // Экран списка категорий
 
 import 'package:flutter/material.dart';
-//import 'package:online_store/api/category_api.dart';
 import 'package:online_store/models/category.dart';
 import 'package:online_store/app.dart';
-//import 'package:online_store/views/product_grid_page.dart';
+import 'package:online_store/views/product_grid_page.dart';
 
 class CategoryGridPage extends StatelessWidget { //базовый виджет неизменяемый, только отображение данных
   @override //переопределение существующего метода ьез создания нового
@@ -30,12 +29,12 @@ class CategoryGridPage extends StatelessWidget { //базовый виджет �
               itemBuilder: (context, index) { //формирование каждой ячейки
                 final category = snapshot.data![index]; //категория по индексу
                 return GestureDetector ( //добавляем обработчик нажатия
-                  /* onTap: () => Navigator.push ( //при нажатии - открыаем экран товаров категории
+                  onTap: () => Navigator.push ( //при нажатии - открыаем экран товаров категории
                     context,
                     MaterialPageRoute ( //переход с анимацией
-                      builder: (_) => ProductGridPage(categoryID: category.id), 
+                      builder: (_) => ProductGridPage(categoryId: category.id), 
                     ),
-                  ), */
+                  ),
 
                   child: Card (
                     child: Column(
